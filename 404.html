@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Navami</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/style/images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="/style/images/favicon.png?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style/style.css" />
+  
+  <style>
+    /* Full cinematic dark experience */
+    .error-page-body {
+      background: var(--dark); /* Deep luxury green */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden; /* Prevent scrolling, 100% immersive */
+      color: var(--cream);
+    }
+    
+    /* Transparent navbar integration */
+    .error-page-body .navbar {
+      background: transparent;
+      border-bottom: 1px solid rgba(212, 193, 123, 0.15); /* Delicate gold line */
+      box-shadow: none;
+      position: absolute;
+    }
+    .error-page-body .nav-links a {
+      color: rgba(245, 239, 224, 0.9);
+    }
+    .error-page-body .nav-links a:hover {
+      color: var(--gold);
+    }
+    .error-page-body .hamburger span {
+      background: var(--cream);
+    }
+
+    /* Container for 404 content */
+    .four-o-four-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Background texture */
+    .four-o-four-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/style/images/hero-bg-navami.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+      z-index: 0;
+      mix-blend-mode: overlay;
+    }
+    
+    /* Radial gradient for focus */
+    .four-o-four-shadow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, var(--dark) 80%);
+      z-index: 1;
+    }
+
+    /* Content styling */
+    .four-o-four-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 5vw;
+      animation: floatUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .four-o-four-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: -10px;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .four-o-four-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(120px, 25vw, 280px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #F3E7C9 0%, #D4C17B 50%, #A58B3A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin: 0;
+      letter-spacing: -0.04em;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    .four-o-four-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--cream);
+      margin: 10px 0 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .four-o-four-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: rgba(245, 239, 224, 0.7);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* Minimalist luxury buttons */
+    .four-o-four-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-gold-outline {
+      border: 1px solid rgba(212, 193, 123, 0.4);
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-gold-outline:hover {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 193, 123, 0.2);
+    }
+    
+    .btn-cream-solid {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+    }
+    
+    .btn-cream-solid:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Mobile handling */
+    @media (max-width: 600px) {
+      .four-o-four-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+      }
+      .btn-gold-outline, .btn-cream-solid {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="error-page-body">
+
+  <!-- ============================================
+       TRANSPARENT NAVBAR
+  ============================================ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="/" class="logo-fallback">
+          <div class="logo-box">
+            <img src="/style/images/logo-transparent.png" alt="Navami" class="logo-img" />
+          </div>
+        </a>
+      </div>
+      
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/menu.html">Menu</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="/menu.html" onclick="closeMobileMenu()">Menu</a></li>
+      <li><a href="/#contact" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================
+       CINEMATIC 404 EXPERIENCE
+  ============================================ -->
+  <main class="four-o-four-wrapper">
+    <div class="four-o-four-bg"></div>
+    <div class="four-o-four-shadow"></div>
+    
+    <div class="four-o-four-content">
+      <span class="four-o-four-eyebrow">A Symphony Interrupted</span>
+      <h1 class="four-o-four-number">404</h1>
+      <h2 class="four-o-four-title">Recipe Not Found</h2>
+      <p class="four-o-four-desc">The exquisite dish or page you are searching for is currently off the menu. Let us guide you back to our true masterpieces.</p>
+      
+      <div class="four-o-four-actions">
+        <a href="/" class="btn-gold-outline">Return Home</a>
+        <a href="/menu.html" class="btn-cream-solid">View Full Menu</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+  </script>
+
+  <!-- Firebase Initialization -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAetTdiyPGC8wp9G7CdPRWl2sJmLcqs5UU",
+      authDomain: "navami-pure-veg.firebaseapp.com",
+      projectId: "navami-pure-veg",
+      storageBucket: "navami-pure-veg.firebasestorage.app",
+      messagingSenderId: "185025825109",
+      appId: "1:185025825109:web:686b0aed31e1871508c7dc",
+      measurementId: "G-FJXKWBC78G"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>
